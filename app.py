@@ -19,7 +19,7 @@ cursor.execute('''
 conn.commit()
 
 # --- DESIGN SCI-FI NEON (CYBERPUNK) ---
-st.set_page_config(page_title="FamilyHub OS", page_icon="🛸", layout="centered")
+st.set_page_config(page_title="Protocolo Gamer", page_icon="🎮", layout="centered")
 
 st.markdown("""
     <style>
