@@ -18,10 +18,19 @@ cursor.execute('''
 ''')
 conn.commit()
 
-# --- DESIGN SCI-FI NEON (CYBERPUNK) ---
-st.set_page_config(page_title="Protocolo Gamer", page_icon="🎮", layout="centered")
+# --- DESIGN SCI-FI NEON COM INJETOR DE ÍCONE NATIVO ---
+st.set_page_config(
+    page_title="Protocolo Gamer", 
+    page_icon="https://icons8.com", 
+    layout="centered"
+)
 
+# Injetor HTML para forçar o Android e iPhone a salvarem o ícone do controle gamer na tela inicial
 st.markdown("""
+    <head>
+        <link rel="icon" href="https://icons8.com" type="image/png">
+        <link rel="apple-touch-icon" href="https://icons8.com">
+    </head>
     <style>
     .stApp {
         background: radial-gradient(circle at top, #0c1020 0%, #04060f 100%) !important;
@@ -59,8 +68,6 @@ st.markdown("""
     label, p, div, span {
         color: #94A3B8 !important;
     }
-    
-    /* NOVO MODELO DE BOTÃO: ESTILO DIGITAL SCI-FI COM BORDAS DE NEON ACESAS */
     .stButton > button {
         font-weight: 800 !important;
         text-transform: uppercase !important;
@@ -71,8 +78,6 @@ st.markdown("""
         transition: all 0.2s ease !important;
         background: transparent !important;
     }
-    
-    /* Botão de Enviar (Neon Azul) */
     .btn-blue button {
         border: 2px solid #00f2fe !important;
         color: #00f2fe !important;
@@ -83,8 +88,6 @@ st.markdown("""
         color: #04060f !important;
         box-shadow: 0 0 20px #00f2fe !important;
     }
-    
-    /* Botão OK (Neon Verde) */
     .btn-green button {
         border: 2px solid #10B981 !important;
         color: #10B981 !important;
@@ -95,8 +98,6 @@ st.markdown("""
         color: #04060f !important;
         box-shadow: 0 0 20px #10B981 !important;
     }
-    
-    /* Botão NOK (Neon Vermelho) */
     .btn-red button {
         border: 2px solid #EF4444 !important;
         color: #EF4444 !important;
@@ -107,7 +108,6 @@ st.markdown("""
         color: #04060f !important;
         box-shadow: 0 0 20px #EF4444 !important;
     }
-    
     section[data-testid="stSidebar"] { background-color: #070B14 !important; }
     </style>
 """, unsafe_allow_html=True)
@@ -126,7 +126,6 @@ tarefas_diarias = [
 
 data_hoje = datetime.now().strftime("%Y-%m-%d")
 
-# Carregar status do dia
 cursor.execute("SELECT tarefa, status, foto, observacao FROM historico_gamer WHERE data = ?", (data_hoje,))
 dados_hoje = {}
 for r in cursor.fetchall():
